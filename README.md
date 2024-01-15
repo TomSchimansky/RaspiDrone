@@ -10,3 +10,5 @@ of information and inspiration for people with similar projects.
 
 https://github.com/TomSchimansky/RaspiDrone/assets/66446067/693bade9-07b2-4246-8f70-a9f16c2e5517
 
+https://github.com/TomSchimansky/RaspiDrone/assets/66446067/2f70f65a-61e4-4c19-a4ac-485b5f99872d
+
