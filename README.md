@@ -4,7 +4,7 @@ This repository documents the hardware and software developement process
 of my private quadcopter project I started in 2019. May this be a helpfull source
 of information and inspiration for people with similar ideas.
 
-![](documentation_images/controller_screenshot_1.png)
+![](documentation_images/controller_screenshot_2.png)
 ![](documentation_images/IMG_0859.JPG)
 ![](documentation_images/IMG_0856.JPG)
 
