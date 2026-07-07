@@ -1,8 +1,8 @@
-# RaspiDrone Quadcopter Project
+# RaspberryPi Wifi Quadcopter Project
 
-In this repository I will document the hardware building and software developement process
-of my private quadcopter project I started in 2019. Maybe this will be a helpfull source
-of information and inspiration for people with similar projects.
+This repository documents the hardware and software developement process
+of my private quadcopter project I started in 2019. May this be a helpfull source
+of information and inspiration for people with similar ideas.
 
 ![](documentation_images/controller_screenshot_0.png)
 ![](documentation_images/IMG_0859.JPG)
