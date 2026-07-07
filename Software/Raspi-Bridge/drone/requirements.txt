@@ -1,0 +1,8 @@
+pynmea2
+pyserial
+psutil
+
+# only needed for the aruco position hold experiment (see aruco.py):
+# numpy
+# opencv-python
+# picamera

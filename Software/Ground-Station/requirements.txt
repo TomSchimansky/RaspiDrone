@@ -1,0 +1,8 @@
+customtkinter
+tkintermapview
+matplotlib
+hidapi
+appscript
+pyobjc-framework-CoreWLAN
+
+# external tools (e.g. via homebrew): mpv

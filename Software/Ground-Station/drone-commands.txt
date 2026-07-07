@@ -1,0 +1,49 @@
+RaspiDrone UDP message protocol
+===============================
+
+Encoding: every message is a single UDP datagram containing a JSON array:
+    ["COMMAND", [data...]]
+Uplink   (ground station -> drone): port 1100
+Downlink (drone -> ground station): port 1101
+Video stream: raw h264 over UDP to the ground station, port 1235
+Unparsable packets are dropped silently on both ends.
+
+-> ("SET_RC_DATA", [control_id: int, roll: int, pitch: int, yaw: int, throttle: int,
+                    aux_1: int, aux_2: int, aux_3: int, aux_4: int]) (ca. 70 bytes)
+   sent at ~120 Hz; channel values are PWM 1000-2000; control_id must be increasing,
+   packets with an old id are ignored
+
+-> ("GET_BAROMETER_AND_GPS", [])
+<- ("GET_BAROMETER_AND_GPS", [est_alt: int (cm), latitude: float, longitude: float, num_sats: int])
+
+-> ("GET_ATTITUDE", [])
+<- ("GET_ATTITUDE", [ang_x: int (1/10 deg), ang_y: int (1/10 deg), heading: int (deg)])
+
+-> ("GET_SYSTEM_STATUS", [])
+<- ("GET_SYSTEM_STATUS", [cpu_temp: float (deg C), ram_load: float (percent),
+                          control_loop_freq: int (Hz), control_freq: int (Hz),
+                          data_loop_freq: int (Hz), control_error_counter: int,
+                          multiwii_cycle_time: int (us) or null,
+                          stream_running: bool, record_running: bool, gps_alive: bool]) (ca. 80 bytes)
+
+-> ("GET_PING", [time: float]) (ca. 35 bytes)
+<- ("GET_PING", [time: float])
+
+-> ("CALIBRATE_MAGNETOMETER", [])
+-> ("CALIBRATE_ACCELEROMETER", [])
+
+-> ("START_VIDEO_STREAM", [ip: str, port: int, quality: str ("low" | "medium" | "HD" | "FullHD")])
+-> ("STOP_VIDEO_STREAM", [])
+-> ("START_VIDEO_RECORD", [])
+-> ("STOP_VIDEO_RECORD", [])
+-> ("TAKE_PHOTO", [])
+-> ("DELETE_VIDEO_RECORDS", [])
+
+-> ("STOP_PROGRAM", [])
+-> ("REBOOT", [])
+
+Reserved for the aruco position hold system (not implemented yet):
+-> ("START_ARUCO_SYSTEM", [])
+-> ("STOP_ARUCO_SYSTEM", [])
+-> ("GET_ARUCO_POSITION", [])
+-> ("SET_ARUCO_POSITION", [...])
